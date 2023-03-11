@@ -7,8 +7,11 @@ const {
   updateHospital,
   deleteHospital,
 } = require("../controllers/hospitals");
-const router = express.Router();
 
+const router = express.Router();
+const appointmentRouter = require("./appointments");
+
+router.use("/:hospitalId/appointments", appointmentRouter);
 router
   .route("/")
   .get(getHospitals)
