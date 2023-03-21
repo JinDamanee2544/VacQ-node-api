@@ -6,10 +6,13 @@ const {
   createHospital,
   updateHospital,
   deleteHospital,
+  getVacCenters,
 } = require("../controllers/hospitals");
 
 const router = express.Router();
 const appointmentRouter = require("./appointments");
+
+router.route("/vacCenters").get(getVacCenters);
 
 router.use("/:hospitalId/appointments", appointmentRouter);
 router

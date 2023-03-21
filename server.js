@@ -1,12 +1,12 @@
 const express = require("express");
 const dotenv = require("dotenv");
+dotenv.config({ path: "./config/config.env" });
+
 const cookieParser = require("cookie-parser");
 const hospital = require("./routes/hospitals");
 const auth = require("./routes/auth");
 const appointments = require("./routes/appointments");
 const connectDB = require("./config/db");
-
-dotenv.config({ path: "./config/config.env" });
 
 connectDB();
 

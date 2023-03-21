@@ -1,4 +1,6 @@
+const e = require("express");
 const Hospital = require("../models/Hospital");
+const VacCenter = require("../models/VacCenter");
 
 // GET /api/v1/hospitals
 exports.getHospitals = async (req, res, next) => {
@@ -149,4 +151,18 @@ exports.deleteHospital = async (req, res, next) => {
       message: "Cannot delete hospital",
     });
   }
+};
+
+exports.getVacCenters = async (req, res, next) => {
+  VacCenter.getAll((err, data) => {
+    if (err) {
+      res.status(500).send({
+        message:
+          err.message ||
+          "Some error occurred while retrieving Vaccine Centers.",
+      });
+    } else {
+      res.send(data);
+    }
+  });
 };
