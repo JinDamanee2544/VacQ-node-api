@@ -3,6 +3,10 @@ const dotenv = require("dotenv");
 dotenv.config({ path: "./config/config.env" });
 
 const cookieParser = require("cookie-parser");
+const cors = require("cors");
+
+dotenv.config({ path: "./config/config.env" });
+
 const hospital = require("./routes/hospitals");
 const auth = require("./routes/auth");
 const appointments = require("./routes/appointments");
@@ -14,6 +18,11 @@ const app = express();
 
 app.use(express.json());
 app.use(cookieParser());
+app.use(
+  cors({
+    origin: ["http://localhost:3000"],
+  })
+);
 
 app.use("/api/v1/hospitals", hospital);
 app.use("/api/v1/auth", auth);
